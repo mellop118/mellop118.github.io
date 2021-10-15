@@ -1,0 +1,710 @@
+@import '../sass/variables';
+@import '../sass/mixin';
+@import '../sass/resert';
+@import '../sass/bodyDefault';
+@import '../sass/slide';
+@import '../sass/scrollAnimation';
+@import '../sass/owlCarrousel';
+
+header {
+    @include box(170px, 100%);
+    @include display-flex(column, space-between, center);
+    z-index: 999;
+    position: fixed;
+    transition: 0.5s linear;
+}
+
+.headerGradientt {
+    background-color: $escura;
+    transition: 0.5s linear;
+}
+
+#conteudo-midia {
+    @include box(40px, 1400px);
+    @include display-flex(row, space-between, center);
+}
+
+#contatos {
+    @include box(inherit, 400px);
+    @include display-flex(row, space-between, flex-start);
+
+    .midia {
+        @include box(1.25rem, 1.25rem);
+        color: $alaranjado;
+    }
+
+    #telefone {
+
+        @include box(inherit, 151px);
+        @include display-flex(row, space-between, center);
+
+        span {
+            font-size: map-get($size, grau5);
+            color: $neutra;
+            font-weight: map-get($densidade, extraBold);
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(80%);
+            }
+        }
+    }
+
+    #hora {
+        @include box(inherit, 199px);
+        @include display-flex(row, space-between, center);
+
+        span {
+            font-size: map-get($size, grau5);
+            color: $neutra;
+            font-weight: map-get($densidade, extraBold);
+            cursor: default;
+
+            &:hover {
+                filter: brightness(80%);
+            }
+        }
+    }
+}
+
+#redes-sociais {
+    @include box(inherit, 133px);
+    @include display-flex(row, space-between, center);
+
+    img {
+        @include box(1.8rem, 1.8rem);
+        cursor: pointer;
+        color: $neutra;
+
+        &:hover {
+            filter: brightness(80%);
+        }
+    }
+}
+
+.conteudo {
+    width: 1350px;
+}
+
+.itens-header {
+    height: 130px;
+    @include display-flex(row, space-between, center);
+}
+
+#logo {
+    min-height: 50px;
+    min-width: 50px;
+    width: auto;
+    height: auto;
+    @include display-flex(row, flex-start, center);
+
+    img {
+        @include box(6.875rem, 7.188rem);
+        border-radius: 50%;
+        transition: 0.5s;
+        box-shadow: $box-shadow;
+        cursor: pointer;
+        filter: brightness(110%);
+
+        &:hover {
+            transform: scale(1.1);
+            transition: 0.5s;
+        }
+    }
+
+    h1 {
+        font-family: 'Righteous', cursive;
+        font-size: map-get($size, titulo);
+        color: $neutra;
+        letter-spacing: 1px;
+        margin-left: 0.5rem;
+    }
+}
+
+#nav {
+    @include box(130px, 550px);
+    @include display-flex(row, flex-start, flex-start);
+
+    ul {
+        @include box(inherit, inherit);
+        @include display-flex(row, space-between, center);
+
+        li {
+            @include display-flex(row, space-between, center);
+            font-size: map-get($size, grau3);
+            text-transform: uppercase;
+
+            a {
+                color: $neutra;
+                text-decoration: none;
+
+                &:hover {
+                    filter: brightness(80%);
+                }
+            }
+        }
+    }
+}
+
+main {
+    @include box(1800px, 100%);
+    @include display-flex(column, flex-start, center);
+    background: linear-gradient(135deg, #C7491E, #e6bb1f);
+
+    .itens-main {
+        height: inherit;
+        @include display-flex(column, flex-start, flex-start);
+
+        #filtragem {
+            @include box(100px, 100%);
+            @include display-flex(row, space-between, center);
+            position: relative;
+            margin-top: 20px;
+        
+            #cardapio {
+                @include box(inherit, 215px);
+                @include display-flex(row, space-between, center);
+                
+                input {
+                    display: none;
+                }
+                
+                input:checked~label .menu {
+                    height: 500px;
+                    width: 420px;
+                    transition: .5s;
+                }
+                
+                input:checked~label .hamburger {
+                    transform: rotate(45deg);
+                }
+                
+                input:checked~label .hamburger:after {
+                    transform: rotate(90deg);
+                    bottom: 0;
+                }
+                
+                input:checked~label .hamburger:before {
+                    transform: rotate(90deg);
+                    top: 0;
+                }
+                
+                input:checked~ul {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                
+                .menu {
+                    background-color: $neutra;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    height: 50px;
+                    position: absolute;
+                    top: 27%;
+                    width: 50px;
+                    z-index: 2;
+                    transition: .5s ease-in-out;
+
+                    .hamburger {
+                        position: relative;
+                        top: 23px;
+                        left: 10px;
+                        width: 30px;
+                        height: 2px;
+                        background-color: $escura;
+                        display: block;
+                        transform-origin: center;
+                        transition: .5s ease-in-out;
+
+                        
+                    }
+                    .hamburger:after, .hamburger:before {
+                        background-color: $escura;
+                        content: "";
+                        display: block;
+                        transition: .5s ease-in-out;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    
+                    .hamburger:before {
+                        top: -10px;
+                    }
+                    
+                    .hamburger:after {
+                        bottom: -10px;
+                    }
+                }
+
+                ul {
+                    position: absolute;
+                    top: 280%;
+                    left: 18%;
+                    transform: translate(-50%, -50%);
+                    font-size: map-get($size, grau4);
+                    opacity: 0;
+                    transition: .7s .1s;
+                    visibility: hidden;
+                    z-index: 2;
+                    @include display-flex(column, center, flex-start);
+                    gap: 30px;
+
+                    img {
+                        height: 2.8rem;
+                        width: 2.8rem;
+                    }
+
+                    #tridente {
+                        position: absolute;
+                        top: -80px;
+                        right: -75px;
+                    }
+
+                    #raio {
+                        position: absolute;
+                        bottom: -70px;
+                        left: -150px;
+                    }
+                }
+                
+                a {
+                    color: $alaranjado;
+                    display: block;
+                    transition: .2s;
+                    text-transform: uppercase;
+
+                    &:hover {
+                        filter: brightness(140%);
+                        transform: scale(1.2);
+                        transition: .4s;
+                    }
+                }
+
+                span {
+                    font-size: map-get($size, grau7);
+                    font-weight: map-get($densidade, bold);
+                    color: $escura;
+                    text-transform: uppercase;
+                }
+            }
+        
+            #buscar {
+                @include box(inherit, auto);
+                min-width: 300px;
+                @include display-flex(row, space-between, center);
+        
+                #pesquisa {
+                    @include box(inherit, 465px);
+                    @include display-flex(row, space-between, center);
+        
+                    #serarch {
+                        @include box(40px, 330px);
+                        padding: 18px;
+                        border-radius: 3px;
+                        border: none;
+                        padding: 5% 5%;
+                        border-radius: 3rem;
+                        color: $escura;
+                        font-size: map-get($size, grau6);
+                    }
+
+                    #submit {
+                        @include box(45px, 120px);
+                        @include display-flex(row, center, center);
+                        text-transform: uppercase;
+                        color: $neutra;
+                        background-color: $alaranjado;
+                        border: none;
+                        border-radius: 3rem;
+                        cursor: pointer;
+                        transition: .5s;
+            
+                        &:hover {
+                            filter: brightness(110%);
+                            transition: .5s;
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+        }
+
+        #produtos {
+            @include box(auto, 100%);
+            @include display-flex(row, space-between, flex-start);
+            flex-wrap: wrap;
+            min-height: 1600px;
+            overflow: auto;
+            margin-top: 20px;
+            gap: 20px;
+        }
+    }
+}
+
+.cards {
+    @include box(520px, 420px);
+    @include display-flex(column, space-between, center);
+    background-color: $escura;
+    padding: 15px;
+    border-radius: 5px;
+    
+    .card-foto {
+        width: 100%;
+        flex-grow: 1;
+        margin-bottom: 10px;
+
+        img {
+            @include box(100%, 100%);
+            border-radius: 5px;
+        }
+    }
+
+    .card-nome {
+        @include box(45px, 100%);
+        @include display-flex(row, flex-start, center);
+
+        h3 {
+            color: $alaranjado;
+            font-size: map-get($size, grau4);
+            font-weight: map-get($densidade, bold);
+        }
+    }
+
+    .card-descricao {
+        @include box(100px, 100%);
+        @include display-flex(row, flex-start, center);
+
+        p {
+            color: $neutra;
+            font-size: map-get($size, grau6);
+            font-weight: map-get($densidade, regular);
+        }
+    }
+
+    .informacoes {
+        @include box(50px, 100%);
+        @include display-flex(row, space-between, center);
+        position: relative;
+
+        button {
+            @include box(40px, 140px);
+            font-size: map-get($size, grau5);
+            text-transform: uppercase;
+            background-color: $alaranjado;
+            color: $neutra;
+            border: none;
+            border-radius: 0.2rem;
+            transition: .5s;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(110%);
+                transition: .5s;
+                transform: scale(1.1); 
+            }
+        }
+
+        i {
+            @include box(15px, 70px);
+            @include display-flex(row, center, center);
+            position: absolute;
+            right: 0;
+            align-self: flex-start;
+            color: $amarelado;
+            font-size: map-get($size, grau5);
+            text-decoration: line-through;
+            top: -6px;
+        }
+
+        span {
+            color: $alaranjado;
+            font-size: map-get($size, grau7);
+        }
+    }
+}
+
+#empresa {
+    @include box(534px, 100%);
+    @include display-flex(row, center, flex-start);
+    background-color: $escura;
+
+    .itens-empresa {
+        height: inherit;
+        @include display-flex(row, space-between, center);
+        border-radius: 4px;
+
+        #informacoes-empresa {
+            @include box(330px, 675px);
+            @include display-flex(column, space-between, flex-start);
+
+            h2 {
+                font-size: map-get($size, subTitulo);
+                font-weight: map-get($densidade, medium);
+                color: $alaranjado;
+            }
+
+            p {
+                font-size: map-get($size, grau6);
+                font-weight: map-get($densidade, regular);
+                color: $neutra;
+            }
+        }
+    }
+}
+
+.barra {
+    @include box(400px, 100%);
+    @include display-flex(column, center, center);
+    gap: 10px;
+    background: linear-gradient(135deg, #C7491E, #e6bb1f);
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    .itens-barra {
+        @include box(auto, auto);
+        min-height: 200px;
+        min-width: 200px;
+        @include display-flex(column, center, center);
+        position: relative;
+    }
+
+    h2 {
+        font-size: map-get($size, titulo);
+        font-weight: map-get($densidade, bold);
+
+        text-transform: capitalize;
+    }
+
+    span {
+        font-size: map-get($size, grau6);
+        font-weight: map-get($densidade, medium);
+    }
+
+    img {
+        @include box(4.6rem, 4.6rem);
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+#promocoes {
+    @include box(600px, 100%);
+    @include display-flex(row, center, flex-start);
+    background: linear-gradient(135deg, #C7491E, #e6bb1f);
+
+    .itens-promocoes {
+        height: inherit;
+        @include display-flex(row, space-between, center);
+    }
+}
+
+#destaques {
+    @include box(430px, 100%);
+    @include display-flex(row, center, flex-start);
+    background: linear-gradient(135deg, #C7491E, #e6bb1f);
+
+    .itens-destaque {
+        @include box(inherit, 100%);
+        @include display-flex(column, space-between, center);
+
+        h2 {
+            height: 50px;
+            color: $escura;
+            font-size: map-get($size, subTitulo);
+            font-weight: map-get($densidade, medium);
+            border-bottom: 4px solid $neutra;
+            margin-top: 20px;
+        }
+    }
+}
+
+footer {
+    @include box(450px, 100%);
+    @include display-flex(column, center, center);
+    margin-top: 5rem;
+    background-color: $escura;
+
+    .itens-footer {
+        height: inherit;
+        @include display-flex(column, space-between, flex-start);
+
+        #informacoes-footer {
+            height: 390px;
+            width: 100%;
+            @include display-flex(row, space-between, flex-start);
+
+            #logo-footer {
+                @include box(inherit, 436px);
+                @include display-flex(row, center, center);
+
+                img {
+                    @include box(13rem, 13rem);
+                    border-radius: 50%;
+                    transition: 0.5s;
+                    box-shadow: $box-shadow;
+                    cursor: pointer;
+                    filter: brightness(110%);
+
+                    &:hover {
+                        transform: scale(1.1);
+                        transition: 0.5s;
+                    }
+                }
+            }
+
+            .titulo-footer {
+                color: $neutra;
+                font-size: map-get($size, subTitulo);
+                font-weight: map-get($densidade, bold);
+                margin-top: 30px;
+                text-transform: capitalize;
+            }
+
+            #lojas-footer {
+                @include box(inherit, 436px);
+                @include display-flex(column, flex-start, flex-start);
+                gap: 20px;
+
+                .unidade {
+                    @include box(auto, auto);
+                    min-height: 50px;
+                    min-width: 100px;
+                    @include display-flex(column, space-between, flex-start);
+                    padding-left: 20px;
+                    gap: 10px;
+
+                    span {
+                        color: $alaranjado;
+                        font-size: map-get($size, grau6);
+                        font-weight: map-get($densidade, medium);
+                        cursor: pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .descricao {
+                        @include display-flex(row, space-between, flex-start);
+                    }
+
+                    img {
+                        @include box(6rem, 6rem);
+                        margin-right: 10px;
+                        transition: .5s linear;
+                        cursor: pointer;
+                        border-radius: 6px;
+
+                        &:hover {
+                            transform: scale(1.1);
+                            transition: .5s linear;
+                        }
+                    }
+
+                    p {
+                        color: $neutra;
+                        font-size: map-get($size, grau5);
+                    }
+                }
+            }
+
+            #contatos-footer {
+                @include box(inherit, 380px);
+                @include display-flex(column, space-between, flex-start);
+
+                form {
+                    @include box(235px, 100%);
+                    @include display-flex(column, flex-start, flex-end);
+                    margin-top: 20px;
+
+                    .caixa {
+                        @include box(50px, 100%);
+                        @include display-flex(row, flex-end, center);
+                        gap: 15px;
+                        position: relative;
+                        padding-right: 10px;
+
+                        label {
+                            color: $neutra;
+                            font-weight: map-get($densidade, medium);
+                            font-size: map-get($size, grau6);
+                        }
+
+                        .icon-input-footer {
+                            position: absolute;
+                            left: 177px;
+                        }
+
+                        input {
+                            width: 55%;
+                            height: 40px;
+                            border-radius: 8px;
+                            outline: none;
+                            border: 2px solid #c4c4c4;
+                            padding: 0 30px;
+                            box-shadow: $box-shadow;
+                            font-size: map-get($size, grau5);
+                        }
+
+                        input:focus {
+                            border: 2px solid $alaranjado;
+                        }
+                    }
+
+                    #button-footer {
+                        @include box(85px, 100%);
+                        @include display-flex(row, flex-end, center);
+                        padding-right: 10px;
+
+                        input {
+                            width: 35%;
+                            height: 45px;
+                            background-color: $alaranjado;
+                            border: 2px solid $alaranjado;
+                            border-radius: 8px;
+                            color: #fff;
+                            font-size: 20px;
+                            cursor: pointer;
+                            box-shadow: $box-shadow;
+                            transition: 0.5s;
+
+                            &:hover {
+                                filter: brightness(110%);
+                                transition: .5s;
+                                transform: scale(1.1); 
+                            }
+                        }
+                    }
+                }
+
+                #galeria-contatos-footer {
+                    flex-grow: 1;
+                    width: 280px;
+                    @include display-flex(row, space-around, center);
+                    margin: auto;
+
+                    img {
+                        @include box(1.7rem, 1.7rem);
+                        cursor: pointer;
+
+                        &:hover {
+                            filter: brightness(130%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #criador-footer {
+        @include box(60px, 100%);
+        @include display-flex(row, center, center);
+        background-color: #000;
+
+        span {
+            color: $neutra;
+        }
+    }
+}
